@@ -1,7 +1,7 @@
 /*
  * java-gnome, a UI library for writing GTK and GNOME programs from Java!
  *
- * Copyright © 2008-2014 Operational Dynamics Consulting, Pty Ltd and Others
+ * Copyright © 2020 java-gnome contributors
  *
  * The code in this file, and the program it is a part of, is made available
  * to you by its authors as open source software: you can redistribute it
@@ -30,36 +30,50 @@
  * version of the library, but you are not obligated to do so. If you do not
  * wish to do so, delete this exception statement from your version.
  */
+package org.gnome.gtk;
 
-#include <jni.h>
-#include <gtk/gtk.h>
-#include "bindings_java.h"
-#include "org_gnome_gtk_GtkClipboardOverride.h"
-
-JNIEXPORT jlong JNICALL
-Java_org_gnome_gtk_GtkClipboardOverride_gtk_1clipboard_1get
-(
-	JNIEnv* env,
-	jclass cls
-)
+/**
+ * Interface to provide style information to {@link StyleContext}
+ * 
+ * @see StyleContext
+ * @see CssProvider
+ * 
+ * @author Patrick Plenefisch
+ * @since 4.1.4
+ */
+public interface StyleProvider
 {
-	GtkClipboard* result;
+    /**
+     * The priority used for default style information that is used in the absence of themes.
+     * <br/><br/>
+     * Note that this is not very useful for providing default styling for custom style classes 
+     * - themes are likely to override styling provided at this priority with 
+     * catch-all <code>* {...}</code> rules.
+     */
+    public final static int PRIORITY_FALLBACK = 1;
 
-	result = gtk_clipboard_get(GDK_SELECTION_CLIPBOARD);
+    /**
+     * The priority used for style information provided by themes.
+     */
+    public final static int  PRIORITY_THEME = 200;
 
-	return (jlong) result;
-}
+    /**
+     * The priority used for style information provided via {@link Settings}.
+     * <br/><br/>
+     * This priority is higher than {@link #PRIORITY_THEME} to let settings override themes.
+     */
+    public final static int  PRIORITY_SETTINGS = 400;
 
-JNIEXPORT jlong JNICALL
-Java_org_gnome_gtk_GtkClipboardOverride_gtk_1clipboard_1get_1primary
-(
-	JNIEnv* env,
-	jclass cls
-)
-{
-	GtkClipboard* result;
+    /**
+     * A priority that can be used when adding a StyleProvider for application-specific style information.
+     */
+    public final static int  PRIORITY_APPLICATION = 600;
 
-	result = gtk_clipboard_get(GDK_SELECTION_PRIMARY);
+    /**
+     * The priority used for the style information from <code>XDG_CONFIG_HOME/gtk-3.0/gtk.css</code>.
+     * <br/><br/>
+     * You should not use priorities higher than this, to give the user the last word.
+     */
+    public final static int  PRIORITY_USER = 800;
 
-	return (jlong) result;
 }

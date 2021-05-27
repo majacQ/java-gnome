@@ -32,28 +32,28 @@ The design documents are loosely organized according to the following scheme:
 
 1. Background material:
 
-	* [The Great Owen Thread and other necessary homework](1a-Homework.html)
-	* [Java Native Interface](1b-AllAboutJNI.html)
+	* [The Great Owen Thread and other necessary homework](1a-Homework.markdown)
+	* [Java Native Interface](1b-AllAboutJNI.markdown)
 
 2. Governing assumptions (our objective as a project, who our audience is, and
    what constraints we impose on ourselves as we go about our business):
 
-   	* [Objective and Audience](2a-ObjectiveAndAudience.html)
-	* [Design Constraints](2b-DesignConstraints.html)
+   	* [Objective and Audience](2a-ObjectiveAndAudience.markdown)
+	* [Design Constraints](2b-DesignConstraints.markdown)
 
 3. Miscellaneous organizational decisions:
 
-	* [Package Names](3a-PackageNames.html)
-	* [Version Numbering](3b-VersionNumbers.html)
+	* [Package Names](3a-PackageNames.markdown)
+	* [Version Numbering](3b-VersionNumbers.markdown)
 
 4. Discussion of public APIs:
 
-	* [TreeView, TreeModel](4a-TreeViewAndTreeModel.html)
-	* [GObject properties](4b-ObjectProperties.html)
+	* [TreeView, TreeModel](4a-TreeViewAndTreeModel.markdown)
+	* [GObject properties](4b-ObjectProperties.markdown)
 
 5. Architecture:
 
-	* [Internal Architecture](5a-Architecture.html)
+	* [Internal Architecture](5a-Architecture.markdown)
 
 These numbers correspond to those used to organize the original threads on the
 java-gnome-hackers mailing list. All of these documents started life as emails
@@ -67,13 +67,13 @@ About the format of our documentation
 
 These documents are all text files! They are, however, _**lightly**_ marked up
 with the syntax of John Gruber's "[Markdown][markdown]" so that they also
-present nicely as web pages. See [`doc/style/MARKUP`](../style/MARKUP.html)
+present nicely as web pages. See [`doc/style/MARKUP`](../style/MARKUP.markdown)
 for details.
 
 As conventions, we:
 
 * put the title of the document by itself on the first line of the file (the
-  script that renders these to HTML on our website picks this up as `<TITLE>`
+  script that renders these to markdown on our website picks this up as `<TITLE>`
   and top banner `<H1>` heading for the document),
 
 * note, _in italics_, the date of the last significant modification at the
@@ -92,9 +92,6 @@ alongside (in!) the source code. As such they are living documents and will
 likely evolve over time as new design decisions are taken. If you care to see
 the history behind certain decisions, check the mailing list archives and the
 version history of the files in this directory.
-
-If there is a change you would like to make, check out a copy of the source
-code and send a patch using `bzr bundle`.
 
 Remember, if you want to hack on java-gnome itself, extend it or use it for
 new and miraculous things, you're best off doing so alongside the community.
